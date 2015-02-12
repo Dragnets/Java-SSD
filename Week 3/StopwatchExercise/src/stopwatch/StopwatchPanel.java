@@ -4,6 +4,7 @@ package stopwatch;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ public class StopwatchPanel extends JPanel{
     
     //fields
     private JLabel timerLabel;
-    //private JPanel  timerPanel;
+    private JPanel  timerPanel;
     private JPanel  controlPanel;
     
     private JButton  startButton;
@@ -78,10 +79,9 @@ public class StopwatchPanel extends JPanel{
         timerLabel = new JLabel("dummy");//will be immediately overwritten
         timerLabel.setBackground(Color.red);
         timerLabel.setOpaque(true);
-        //timerPanel    = new JPanel();
-        //timerPanel.add( timerLabel);
+        timerPanel    = new JPanel();
+        timerPanel.add( timerLabel);
         controlPanel = new JPanel();
-        controlPanel.add(timerLabel);
         
         startButton = new JButton(     "Start");
         stopButton = new JButton(     "Stop");
@@ -89,12 +89,16 @@ public class StopwatchPanel extends JPanel{
         //lapButton = new JButton(        "Lap");
         
         controlPanel    = new JPanel();
+        controlPanel.setLayout(new GridLayout(1,3));
         controlPanel.add( startButton);
         controlPanel.add( stopButton);
         controlPanel.add( resetButton);
+        //controlPanel.add(timerLabel);
+        
         //controlPanel.add(lapButton);
         
-        this.add( timerLabel, BorderLayout.CENTER);
+        
+        this.add( timerPanel, BorderLayout.CENTER);
         this.add( controlPanel, BorderLayout.SOUTH);
     }
 } 
