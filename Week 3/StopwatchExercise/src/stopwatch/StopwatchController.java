@@ -134,6 +134,16 @@ public class StopwatchController {
             }
         }
     }
+    public class LapActionListener implements ActionListener {
+        
+        @Override
+        public void actionPerformed(ActionEvent event){
+            if (theState == RUNNING){
+                
+            }
+        }
+        
+    }
     
 } 
 

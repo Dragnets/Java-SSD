@@ -20,14 +20,17 @@ import javax.swing.JPanel;
 public class StopwatchPanel extends JPanel{
     
     //fields
+    private JLabel title;
     private JLabel timerLabel;
+    private JLabel entry;
     private JPanel  timerPanel;
     private JPanel  controlPanel;
+    private JPanel entryPanel;
     
     private JButton  startButton;
     private JButton  stopButton;
     private JButton  resetButton;
-    //private JButton  lapButton;
+    private JButton  lapButton;
     
    
     /**
@@ -42,6 +45,7 @@ public class StopwatchPanel extends JPanel{
         startButton.addActionListener(controller.new StartActionListener());
         stopButton.addActionListener(controller.new StopActionListener());
         resetButton.addActionListener(controller.new ResetActionListener());
+        lapButton.addActionListener(controller.new LapActionListener());
         
   
     } 
@@ -75,30 +79,38 @@ public class StopwatchPanel extends JPanel{
         
         this.setLayout(new BorderLayout());
         //Changed 14/2/2012 to cope with full window not appearing
-        //timerLabel = new JLabel();
+        title = new JLabel("My Stopwatch");
+        timerLabel = new JLabel();
         timerLabel = new JLabel("dummy");//will be immediately overwritten
         timerLabel.setBackground(Color.red);
         timerLabel.setOpaque(true);
         timerPanel    = new JPanel();
+        timerPanel.setLayout(new GridLayout(2,1));
+        timerPanel.add(title);
         timerPanel.add( timerLabel);
-        controlPanel = new JPanel();
+        //controlPanel = new JPanel();
         
         startButton = new JButton(     "Start");
         stopButton = new JButton(     "Stop");
         resetButton = new JButton(     "Reset");
-        //lapButton = new JButton(        "Lap");
+        lapButton = new JButton(        "Lap");
         
         controlPanel    = new JPanel();
-        controlPanel.setLayout(new GridLayout(1,3));
+        controlPanel.setLayout(new GridLayout(1,4));
         controlPanel.add( startButton);
         controlPanel.add( stopButton);
         controlPanel.add( resetButton);
-        //controlPanel.add(timerLabel);
+        controlPanel.add(lapButton);
+        
+        entry = new JLabel("HELLO");
+        entryPanel =new JPanel();
+        entryPanel.add(entry);
+        
         
         //controlPanel.add(lapButton);
         
-        
-        this.add( timerPanel, BorderLayout.CENTER);
-        this.add( controlPanel, BorderLayout.SOUTH);
+        this.add( timerPanel, BorderLayout.NORTH);
+        this.add( controlPanel, BorderLayout.WEST);
+        this.add( entryPanel, BorderLayout.SOUTH);
     }
 } 
